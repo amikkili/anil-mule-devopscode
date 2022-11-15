@@ -1,0 +1,629 @@
+Mule Class Link::-
+
+https://meet.goto.com/992292949
+
+new-link
+
+https://meet.goto.com/315759197
+
+====================
+Prerequisites for mule
+======================
+8 gb ram laptop
+anypoint studio
+30 days trial version anypoint platfornm
+any database to b installed
+maven to be installed
+java to b installed
+Postman should be installed
+==============================
+
+corejava---needs to be have the knowledge
+
+Any database kowledge is mandatory
+ 
+Web service is a technology to communicate one programming language with another. 
+For example, java programming language can interact with PHP and .Net by using web services. 
+==>> In other words, web service provides a way to achieve interoperability.
+
+==>> So web service is a language independent way of communication.
+ 
+2 types of web service
+ 
+SOAP web services.
+RESTful web services.
+
+RAML--->>
+
+SOAP stands for Simple Object Access Protocol. It is a XML-based protocol for accessing web services.
+
+WSDL---> Web services descriptive language
+
+<xml>
+
+<header></header>
+<name>pramod</name>
+<body></body>
+<>
+
+<>
+
+Disadvantages:
+Slow: SOAP uses XML format that must be parsed to be read. It defines many standards that must be followed while developing the SOAP applications. So it is slow and consumes more bandwidth and resource.
+
+REST stands for REpresentational State Transfer.
+
+RAML==> Restful Api modeling language
+
+
+here the concept coupling 
+tightly coupling and loosly coupling
+
+
+
+Username: vasanthi82
+Password: Vasanthi@82
+
+==========================================
+On 7/5/22
+==========================================
+
+1. MuleSoft is a software company headquartered in San Francisco, California, that provides integration software for connecting applications, data and devices.
+2. Started in 2006, the company's Anypoint Platform of integration products is designed to integrate software as a service (SaaS)
+3. Ross Mason and Dave Rosenberg founded MuleSource in 2006.
+4. The company changed the name to MuleSoft in 2009.
+5. The company originally provided middleware and messaging, and later expanded to provide an integration platform as a service (iPaaS) approach for companies through its main 	   product, Anypoint Platform
+6. In March 2018, Salesforce.com announced it was buying MuleSoft.
+7. MuleSoft's Anypoint Platform includes various components such as 
+	
+	Anypoint Design Center==>>which allows API developers to design and build APIs; 
+	
+	Anypoint Exchange===>> a library for API providers to share APIs, templates, and assets; 
+	
+	Anypoint Management Center===>> a centralized web interface to analyze, manage, and monitor APIs and integrations. 
+	
+	Mule runtime engine ===>> a runtime solution for connecting enterprise applications on-premises and to the cloud
+
+
+step 1: desing an api using design center
+step2: needs to publish api into exchange 
+step 3: nedds to maintain api manger api to be availble 
+step 4: Needs to deploy our api in Runtime Cloud
+
+
+
+
+What is cloud and On-premises
+
+Environments::
+
+Dev===>Developer can use this Env to deploy tha real Api and can test thier api
+Test/QA==>Testers can use 
+UAT===>> Tes
+Pre-pre-Prod===>>
+
+
+Once u deploy the api it will provide us .jar file 
+====================
+7/8/22
+Mule core concepts
+==================
+Mule message structure
+
+A Mule message is the part of the Mule event that serves as a container for message content and metadata, typically from external sources, as it is processed within flows of a Mule app.
+
+The Mule message is immutable, so every change to a Mule message results in the creation of a new instance. Each processor in a flow that receives a message returns a new Mule message consisting of these parts:
+
+A message payload, which contains the body of the message. For example: the content of a file, a record from a database, or the response to a REST or Web Service request.
+
+Message attributes, which are metadata associated with the payload.
+
+Payload===>inbound/request messages and outbound/response  messages
+
+query parameters and uri parameters, status codes 
+
+{
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+      "street": "Kulas Light",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    }
+  }
+[1,,3,4,4]
+
+1 whhr  343er qw3244
+
+
+mule processes two types of processing strategies
+1. synchronus flow processing strategies
+2. Asynchrous 
+
+::type of flows::
+1. flow--> flow contains source , process and its own error handling 
+2. subflow---> it contains process 
+3. private flow---> it contains source , process and error handling
+======================================================================
+07/08
+==========
+API-LED connectivity
+---------------------
+
+The APIs used in an API-led approach to connectivity fall into three categories:
+
+System APIs – these usually access the core systems of record and provide a means of insulating the user from the complexity or any changes to the underlying systems. Once built, many users, can access data without any need to learn the underlying systems and can reuse these APIs in multiple projects.
+Process APIs – These APIs interact with and shape data within a single system or across systems (breaking down data silos) and are created here without a dependence on the source systems from which that data originates, as well as the target channels through which that data is delivered.
+Experience APIs – Experience APIs are the means by which data can be reconfigured so that it is most easily consumed by its intended audience, all from a common data source, rather than setting up separate point-to-point integrations for each channel. An Experience API is usually created with API-first design principles where the API is designed for the specific user experience in mind.
+ 
+Realtime project 
+================
+1. design
+2. developers
+3. test
+4. deploy
+
+
+json
+
+{
+"Name": "Muleprogramme",
+"Status": "Success",
+"Address":"Hyderabad"
+}
+
+
+7/12
+========
+
+xml 
+<header>hello i am header</header>
+<body>hyjjgtrt</body>
+
+
+Connectors--> 
+components--> logger , transform message 
+flow controls-----> 
+cutom connectors--> 
+
+DWL--> Data weave language
+MEL--> Mule expression language
+
+http and https 
+jks certificate 
+=================
+7/13/22
+=================
+RAML---->Restful api modeling language
+
+RAML is a Rest API Modeling Language and it is based on YAML for describing your API's. It is basically used to describe your API, which can be easily readable by humans and computers. It basically focuses on describing your API resources, methods, parameters, media type etc.
+
+1.ENTER THE ROOT
+
+#%RAML 1.0
+---
+title: sample API
+baseUri: http://api.sample.com/
+version: v1
+
+ENTER RESOURCES
+
+/users:
+  /books:
+  /authors:
+
+ENTER METHODS
+
+GET - Retrieve the information defined in the request URI.
+
+PUT - Replace the addressed collection. At the object-level, create or update it.
+
+POST - Create a new entry in the collection. This method is generally not used at the 	  object-level.
+
+DELETE - Delete the information defined in the request URI.
+update: 
+
+
+ENTER URI PARAMETERS
+/books:
+  /{bookTitle}:
+
+
+
+ENTER QUERY PARAMETERS
+
+/books:
+  get:
+    queryParameters:
+      author:
+     
+  put:
+  post:
+  
+ENTER RESPONSES
+
+/books:
+  /{bookTitle}:
+    get:
+      description: Retrieve a specific book title
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "data": {
+                    "id": "SbBGk",
+                    "title": "Stiff: The Curious Lives of Human Cadavers",
+                    "description": null,
+                    "datetime": 1341533193,
+                    "genre": "science",
+                    "author": "Mary Roach",
+                    "link": "http://e-bookmobile.com/books/Stiff"
+                  },
+                  "success": true,
+                  "status": 200
+                }
+
+What Is ResourceTypes?
+
+ResourceTypes is like resource in that it can specify the descriptions, methods, and its parameters.
+Resource that uses resourceTypes can inherit its nodes. 
+ResourceTypes can use and inherit from other resourceTypes.
+
+ResourceType is basically a template that is used to define the descriptions, methods, and parameters that can be used by multiple resources without writing the duplicate code or repeating code.
+
+What Is Traits?
+Traits is like function and is used to define common attributes for HTTP method (GET, PUT, POST, PATCH, DELETE, etc).
+
+=================
+root
+=====
+#RAML 1.0
+title: sample api 
+description: it is a just sample for my practice
+version: 1.1
+
+/sampleapi:
+  /{rollnumber}:
+ get: 
+  queryPatameters:
+    name:
+	phoneno:
+	address:
+	
+#%RAMl 1.0
+title: 
+descriptin: 
+base uri:
+version: 1.0
+
+
+/anil:	
+  get
+Traits
+ResourceTypes
+Schemas
+DataTypes
+Extensions
+Libraries
+
+Rest Api's
+Soap api's
+
+RAML
+Any studio
+connectors 
+components
+
+
+
+Atributes:;
+
+Inbound message 
+outbound message 
+query params
+headers
+
+
+=====================
+HTTP Conector configuration
+
+
+Mule message flow processing strategies
+
+two types
+1. Synchronious 
+2 . Asynchrous
+
+
+==============
+
+Payload Extraction
+
+
+Variables
+
+
+================
+flow 
+sub floiw
+private flow
+
+=======================
+success===>> cash withdrawn sucessfully ===>>200 
+
+failure===>> due to some technical issue unable to process=====>400/500 
+
+Exception handlings
+===================
+message type  ecxeptions======>>
+
+system type exceptions===>
+
+
+
+{
+    error:{
+             message: error due to down stream system is not working,
+             details: error.description
+             }
+}
+
+
+
+Method not allowed for endpoint: /demo
+=============================================
+
+
+
+
+				{
+                    "id": "SbBGk",
+                    "title": "Stiff: The Curious Lives of Human Cadavers",
+                    "description": null,
+                    "datetime": 1341533193,
+                    "genre": "science",
+                    "author": "Mary Roach",
+                    "link": "http://e-bookmobile.com/books/Stiff"
+                  }
+
+Design
+Developer======> Unit Testing ===>> 80% ===>> SonarQube 
+Testing
+Deeploy
+
+========================================
+
+MEL ==> Mule expression language
+
+
+RAMl---> Anypoint platform 
+
+https://retail.onlinesbi.com/retail/loginsubmit.html
+
+http://e-bookmobile.com/books/Stiff
+
+http://www.google.com
+
+http---> protocol
+https---->> Security 
+
+GET---> To retrive the data
+]
+
+
+
+step 1: Raml creation in AP and import to AS====> Done
+step 2:- flows generation====>> Done
+step 3:- logic implementation===>> Done
+
+
+
+{
+    "error": "Resource not found",
+    "statuscode": "404",
+    "message": "This is failing because you r nit using proper Resource Name"
+}
+=========================
+7/27/22
+================
+Hard to change.
+
+Maintainability.
+
+High operation risk.
+
+Time to market.
+
+
+Enterpride service Bus  ESB
+
+APi-Led Connectivity 
+
+1. Sysytem Api
+2. Process Api
+3. Experience Api
+
+=============
+#RAMl 1.0
+title: sample api
+baseuri: https://localhost:8089/aniltemplate
+descriptin: this is the way of maintaing the api url
+
+
+https://localhost:8089/aniltemplate
+
+
+<http:listener doc:name="Listener" doc:id="981cce08-deea-4b35-a686-88e3da0b6f30" />
+
+
+::::Error handling:::
+
+1. try scope
+2. on error continue--->if error occurs , but we dont want to stop our code , so that it will process and continue
+3. on errror propagate 
+
+
+===================
+
+step 1: 
+step 2: 
+step 3:
+default: 
+====================
+
+Message               : "Script 'vars.writer == Mary ' has errors: 
+	Unable to resolve reference of: `Mary`. at 1 : 1" evaluating expression: "vars.writer == Mary".
+Element               : (None)
+Element DSL           : (None)
+Error type            : MULE:EXPRESSION
+FlowStack             : (None)
+
+==============================
+static====>> costant value
+
+Dynamic==>Changeble 
+
+coromonadl lo sl 140 seats
+				 130 
+				 
+===================================
+Raml
+===========
+{
+                    "id": "SbBGk",
+                    "title": "Stiff: The Curious Lives of Human Cadavers",
+                    "description": null,
+                    "datetime": 1341533193,
+                    "genre": "science",
+                    "author": "Mary Roach",
+                    "link": "http://e-bookmobile.com/books/Stiff"
+                  }
+===================
+
+API specification 
+API Contract
+Api fragmentation==============
+=======================
+
+step 1: 
+#RAml 1.0===>> Root
+Title: sjugh
+basuUri: http://localhost:8089/prohgiy
+describe: kjohiytuoiyu
+version: 1.0.
+
+step : 2
+ protocols: http , https
+Mediatype : 
+ -application/json
+
+step 3
+
+/projecct:
+get: 
+ descriptin:
+ 
+======================
+Resource types--->
+Traits--
+Data Types--
+Libraries
+Extensions--->
+examples---
+schemas---
+
+
+======================
+ Design Center ==>
+=================================
+Steps to create api by using raml
+=================================
+step 1 : - create a raml in the design center -----> Done 
+step 2 :- download/import raml from the anypoint platform ---> Done 
+step 3 : - generathe the restfull flows by using imported raml----->Done
+step4: : - implement business logic in the generated flows ---> Done
+step 5: - deploy the api in the local and test it bu using postman ---Done 
+ 
+
+
+Url:- http://localhost:8083/api/projec
+
+===========================================
+
+flow reference --->
+
+Error handling inmule 4 :
+<<<-------------------------->>>
+On-error propagate 
+on error continue---> 
+try scope--->
+========
+{
+                  "data": {
+                    "id": "hytrv",
+                    "title": "The Curious Lives of Human Cadavers",
+                    "description": null,
+                    "datetime": 1341533193,
+                    "genre": "social",
+                    "author": "Panther",
+                    "link": "http://e-bookmobile.com/books/Stiff"
+                  },
+                  "success": true,
+                  "status": 200
+                }
+				
+{
+  "id": "hytrv",
+  "title": "The Curious Lives of Human Cadavers",
+  "description": null,
+  "datetime": 1341533193,
+  "genre": "social",
+  "author": "Panther",
+  "link": "http://e-bookmobile.com/books/Stiff"
+}
+
+35345754184
+name: ch abhishek 
+=====================
+(key): (value)
+$--> value 
+$$---> key 
+$$$--->index
+======================================
+Munit comonents
+---------------------
+Mock When--> 
+The Mock When processor enables you to mock an event processor when it matches the defined name and attributes.
+#[MunitTools::getResourceAsString('duplicatedata.json')]
+
+type: { DtmsBasicResource:{ ObjectNamePOST: "finalize", ObjectTypeNamePOST: "finalize", SuccessResponseTypeNamePOST: "SuccessResponse", ErrorResponseTypeName: "ErrorResponse"} }
+
+MEl --> Mule expression Language
+
+[{
+ "class": 14 ,
+ "name": "Claire"
+}, {
+ "class": 56,
+ "name": "Max"
+}, {
+ "class": 89,
+ "name": "John"
+}]
+map--> iterates array of multiple into single 
+
+["name","age","class","address"] 
+
+[
+"0":"name",
+"1":"age",
+"2":"class"
+]
