@@ -1,0 +1,923 @@
+--:DevOps Class:---
+:::Demo::
+--------------
+session will be 50 classes and daily 1 hr basis, having lab practice on every tool 
+basic commands on linux 
+providing recrding sessions as well
+For the resume preparation also will be discuss
+will do mock interviews 
+wil be available on mobile for ur future doubts
+will be providing interview questions. 
+will be providing some class notes.
+-----------------------------
+Tools list
+------------
+Source code management tools::--> GitHub/svn/mercula/tfs
+COnfiguration management tools:--> Ansible/chef/puppet/saltlake/Terraform
+Continuos integration--> Jenkins/Teamcity/Hudsan/Bamboo
+Continuos Deployment/Delivery---> Docker
+Build tool --> Maven/ Ant/Graddle
+Monitiring Tools:--> Ngios/Splunk
+Orchestration Tool:: --> Kuberenetes(k8's)
+Cloud:--> AWS/AZure/GCP/IBM Cloud /Alibaba cloud
+
+services: 
+1. EC2 2. vpc 3. nat gateways 4. security groups 5. I AM 6. cloudformation 
+7. cloud watch 8. s3 9. elastic ip's 10. EKS 11. AKS 12. ELB
+Basic linux commands should be aware and will be having couple of classlesson it.
+
+-----------------------------------------
+Build formats provided by Maven --> .jar, .war, .rpm, .exe
+======================================
+what is environment
+-------------------
+1. Dev ==> For Developers
+2. QA//Testing ===>> For Testers 
+3. UAT===> User Acceptance Testing
+	Lower Env/Pre-Prod===>> Dev, QA/Testing, UAT
+4. Prod
+
+Team contains
+-------------
+Dev 
+Testing 
+Admin
+BA 
+Architects 
+===============
+What is computing ??
+Computing is the process of using computer technology to complete a given goal-oriented task. 
+Computing may encompass the design and development of software and hardware systems for a broad range of 
+purposes - often structuring, processing and managing any kind of information - to aid in the pursuit of scientific studies, making intelligent systems, and creating and using different media for entertainment and communication
+
+What is cloud computing?
+Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing. 
+Instead of buying, owning, and maintaining physical data centers and servers, 
+you can access technology services, such as computing power, storage, and databases, 
+on an as-needed basis from a cloud provider like Amazon Web Services (AWS).
+
+----------------------
+kind of Architecture 
+----------------------
+1-Tier Architecture
+1 Tier Architecture in DBMS is the simplest architecture of Database in which the client, server, and Database all reside on the same machine. A simple one tier architecture example would be anytime you install a Database in your system and access it to practice SQL queries. But such architecture is rarely used in production.
+-------------
+2-Tier Architecture
+A 2 Tier Architecture in DBMS is a Database architecture where the presentation layer runs on a client (PC, Mobile, Tablet, etc.), and data is stored on a server called the second tier. Two tier architecture provides added security to the DBMS as it is not exposed to the end-user directly. It also provides direct and faster communication.
+
+A 3 Tier Architecture in DBMS is the most popular client server architecture in DBMS in which the development and maintenance of functional processes, logic, data access, data storage, and user interface is done independently as separate modules. Three Tier architecture contains a presentation layer, an application layer, and a database server.
+AWS free tier 
+=============
+12 months free eligible
+charge rs 2 and it will refundable
+will receive otp n submit
+will receive the sms and enter the code u received (4 digit)
+
+select basic plan.
+ 
+steps to create a new account with aws
+====================================
+1. go to aws portal --> https://portal.aws.amazon.com/billing/signup#/start/email
+2. clk on create new aws account
+3. provide required details and clk on verify email address.
+4. once u done with the step 3 ..you will receive an otp to verify
+5. you have to provide some personal details (credit/debit card details) it will costs you Rs. 2 from your Account and it will be refundable once the account creation completes.
+
+Regions
+Availaility Zones 
+
+SF cloud --> got intrioduced in the year of 2002-03 --> s/w as a service---> SAAS---> CRM
+AWS cloud --> got intrioduced in the year of 2006
+Microsoft Azure--->
+GCP --->
+IBM -->
+Alibaba Cloud --> 
+Types of services provided by Any Cloud
+SAAS===> Software as a service
+PAAS===> platform as a service
+IAAS===> Infra as a service 
+=====================
+On-premises and cloud difference
+
+cloud: 
+
+On-premises:
+-------------------
+pre-requisites to conncet with linux instances
+----------------------------------------------
+1. you have to install gitbash s/w on ur machine
+2. you have to install putty on your machine
+putty official website to download ---> https://www.putty.org/
+
+::how to launch new ec2 instance in aws::
+-----------------------------------------
+Elastic cloud computing ->> Ec2
+-----------------------------------------
+1. go to ec2 service
+2. clk on launch instance 
+3. you haveto give the instance name eg:- testing machine ..
+4. yoiu have to select only free tier services 
+5. you have to selct O/S under free tier eligible
+6. key pair selection:-
+ i. firstly u need to create new key pair and needs to provide the name for key pair.
+ ii. select no of instances that u wanted to launch and clk on launch instances.
+7. selcet the network 
+ 1. selecy vpc
+ 2. select subbnet
+ 3. select security group 
+ 4. create Route table 
+8. finally, do click on launch instance.
+
+version in the instances to be selected
+t1---> series 
+t2---> series
+t3---> series
+a1---> series
+c1---> series
+c3---> series
+=================LINUX COMMANDS====================
+$--> Normal user 
+#--> root---> sudo su -
+/bin:- it contains normanl user command like :- ls , cat , run 
+/sbin:- system binary directory file , eg:- mount , shutdown 
+/etc:-  it contains configuration files details eg:- s/w installation details 
+/opt:- used it for to install the softwares
+/var:- it contains logs, mails 
+/home:- it coantins normal user created files 
+/dev:- logical disk mangement eg:- h/w partitions 
+/media :- it contains media files location
+/mnt:- temporarly mounting point 
+/boot:- kernel files location
+
+
+To create files
+---------------
+touch  <filename>---> to create empty file
+vi <filename> ---> to edit the file
+if u want to add something there press 'i' so that it will move to the insert mode 
+To exit from the file esc-->:wq! 
+cat><filename>--> to append the file 
+to create directory
+mkdir <dirname>
+mkdir -p Batch/devops/online/classes -->to create a file like this : Batch/devops/online/classes
+
+pwd--> present/print working directory 
+cd .. ---> one dir back 
+cd ../.. 2 dir back
+cd../../..--> 3 dir back
+cd ----> directly back to the root
+~(tilt) ---> it represents the home dir.
+
+files deletion:
+rm <filename>---> to delete the file 
+rm -f <filename> --> to delete forcefully
+rmdir <DirName>---> To remove empty dir 
+rm -rf <dirName>---> to remove non-empty dir
+list the files 
+---------------
+ls -s --->to display the size
+ls -l --> To display long list of the files/ folders 
+ls -ld --> to display specific directories 
+ls -lt --> To display as per the timestamp 
+ls -la ---> To list the permisions of the files/foldes
+------------------------------------------------------
+To create new users , needs to login into root
+-----------------------------------------------
+useradd <user-name>
+cat /etc/passwd--> to list out all the users 
+userdel <user-name>---> To delete the created user
+su - <username> --> To move to the user 
+chown <username> <filename> --> To change the ownership  
+#hostname---> to get hostname 
+#hostname -f --> to get hostname
+To get ip adress
+----------------
+#hostname -i---> To get ip adress
+#uname 	
+#ip a 
+#ifconfig 
+To get memory details
+---------------------
+#free -m --> RAM
+#df --> HDD 
+#df -h --> Human Readale format 
+#df -m --> file system 
+#du --> dir usage 
+Process management
+------------------
+#ps
+#ps -ef 
+#ps -ef |grep 'java'
+#ps -ef |grep 'mysql'
+#top --> View active processes live with their system usage
+The service command in Linux
+-----------------------------
+#service <s/w Nme> status
+#service <s/w Nme> start 
+#service <s/w Nme> stop 
+#systemctl start tomcat 
+#systemctl stop 
+#systemctl enable 
+--------------------------
+to kill process commands
+----------------------------------
+#ps --> To find the running processes
+#ps <process-id> ---> to kill the process
+#pkill <pname>
+eg:- #pkill java 
+------------------------------------------
+The cal command in Linux
+------------------------
+#cal --> To print the calender f the current month
+#cal jan 2021
+
+----------------------------
+Linux package installation
+list of the os Redhat, centos,Fedora,Suse,Uuntu,Debian, etc.
+Redhat/centos
+----------------------------
+rpm (redhat package manager)
+yum
+#yum install tree -y 
+#yum remove tree -y
+#yum list installed --> to list installed packages 
+#yum list available
+#yum list all --> to list all 
+#yum update --> to update the package
+ubuntu/debian
+-------------
+apt
+apt-get
+#apt-get install update 
+#apt-get install openjdk-1.8.0 -y 
+#apt-get update 
+
+wget----> To download the package
+eg: wget <package-name>
+-----------------------
+To change the owner , group and other users permissions 
+
+chmod g+w filename
+chmod g-wx filename
+chmod o+w filename
+chmod o-rwx foldername
+
+read --->   r---4
+write -->   w---2
+execute---> x---1
+--------------------
+				7d 
+rwx rw- rwx  3 root root   19 Nov  1 01:22 Devops
+
+			--------
+d rwx r-x r-x 3 root root
+
+rwx---(owner) 
+rwx --(group) 
+rwx--(other) 
+1---> stands for no of links 
+root--> owner or user 
+root --> group 
+19 --> size 
+Oct 19 13:05 --> Date n Time
+demo.txt --> file name
+----------------------------------------------------------
+- stands for file type
+d--> stands for directory
+ 
+Owner --> u
+Group --->g
+others--> o 
+7--> rwx  6--> rw-   5--> r-x  4--> r   3--> -wx  2--> w  1--> x 
+
+=======================================================
+rpm -q <s/w name> ---> To check installed version of Git
+
+yum install <s/w name> -y ---> To install git software.
+
+yum remove <s/w name>---> to remove any s/w
+
+--------------------------------------------------------
+To list the softwares installed 
+#yum list installed <package-name>
+#yum list installed --> To get all the installed packages.
+
+--------------------------------------------------
+why vpc 
+due to some security breaches we are going for vpc, because we can't use the same ip in the same region 
+vpc-aws
+------------------------------
+vpc----> Virtual private cloud
+region---> wher ethe aws services are availability 
+go to global infra 
+==> Availaility zone
+==> Data centers
+steps to create vpc
+-------------------
+1.create vpc ip range(Devops-mng-batch) --> 10.50.0.0/16 --->done 
+	make dns hostnames should be enable else public ip can't assign
+2. create a subnet ---> 	
+web server--10.50.1.0/24--> 251 --->> us-east-1a--> done 
+App server ---> 10.50.2.0/24--> us-east-1b--> done 
+DB-server --> 10.50.3.0/24--->us-east-1c--> done 
+
+what is subnet?
+A subnet is a differentiated part of a bigger network or subnetwork.
+More precisely, a logical partition of an IP network into several, smaller parts of the network is subnets.
+
+Difference Between IPv4 and IPv6
+-----------------------------------
+Difference between IPv4 and IPv6.
+both are the versions of internet protocol.
+where IPv6 is the enhanced version of IPv4. 
+There are various differences between IPv4 and IPv6 protocol including their features, but the crucial one is the number of addresses (Address space) it generates.
+
+CIDR --> classless Inter-Domain Routing Block
+/8 ===> 255.0.0.0 ===> 16 lacs ip address will be available.
+/16 ==> 255.255.0.0 ==> 65000 ip address ---aws supported.
+/24 ==> 255.255.255.0 ==> 256 ip addresses.
+
+IPv6
+FDEC:BA98:7654:3210:ADBF:BBFF:2922:FFFF
+IPv4
+128.11.3.31
+once completion of subnet make sure to enable auto-assign public IPv4 address.
+------------
+Route Table 
+-------------
+For a network router to know where to send packets of data it receives, it uses a routing table. 
+
+4. create IGW, name it and attach it vpc---> done 
+5. to launch instance in different availbility zones.
+
+If you need to establish a connection between your company’s corporate network and isolated resources in the cloud (or behind a firewall), a VPN is what you need.
+
+On the other hand, if you’re looking to securely isolate resources within a public cloud, a VPC is the answer
+========================8/18/22===================
+1.create a new two subnets 
+2. crete a NAT gateway and select subnet 
+3. create a new routuing table name it and add NAT subnet to it 
+4. create route towards NAt Gateway so that all traffic sent by DB server will go to NAT gateway
+5. Deploy VM1 in public subnet and DB1 in private subnet.
+6. Try to connect DB1 server using public ip and it should fail(connection timed out).
+7.login to vm1 and from there conncet to DB1
+8. ping www.google.com from DB1 and it should work.
+9. Prove the data is going through via NAT gateway 
+
+=================================
+Permission denied  error vachindi
+
+1. so , MyFirstKeyPair.pem ni notepad lo open chesi cmd lo nano MyFirstKeyPair.pem type cheyyali
+2. next, ctrl+O Enter and ctrl+x to exit press cheyyali
+3. type cmd --> ssh -i MyFirstKeyPair.pem ec2-user@<DB private ip evvali>
+4. ee error vasthundi
+... WARNING: UNPROTECTED PRIVATE KEY FILE!  
+5. so now we have to change the permission <chmod 400 MyFirstKeyPair.pem>
+permission got changed ..only owner has read accss now.
+
+-r-------- 1 root root 1675 Aug 17 18:29 MyFirstKeyPair.pem
+6. now, entered into DB server by using the  
+ we can observe earlier --> root@ip-10-50-1-36 
+				   Now----> root@ 
+				   
+
+================8/22/22================
+Git: Git is an open source distributed version control system designed
+to handle everything from small to very large projects with speed and efficiancy.
+
+It will manage and keep tacks your changes of your projects.
+
+It has a command line and GUI tool for pushing , committing the projects to the github, bitbucket or gitlab.
+
+GitHub: GitHub is a cloud based git repository hosting service.
+
+Here you can manage and share your code with other and manage development teams as collaborators.
+
+You can manage private repositories with 3 collaborators for a software development projects.
+
+Git Lab: Git lab is a web-based devops life cycle tool provides a git repository manager provides wiki, 
+issue tracking and CI/CD pipe line.
+======================================
+Steps to Create an account with GitHub
+=====================================
+step 1: Go to https://github.com/ website 
+step 2: signup for it
+
+done with Account creation and definitions
+
+***git is developed  by Torvald Linuz
+***Linux is also developed by Torvald Linuz*****
+
+
+-->>    /root/.ssh/id_rsa.pub
+
+
+
+features of Git
+-------------------->>
+free and open source 
+fast and light weight 
+security:--> ssh keys -->>SHAI-->security Hash functions
+no need of powerful H/w
+easiest way of doing branching 
+default branch is master
+
+==============8/23/22=================
+what is branch?
+ In Git, branches are a part of your everyday development process. Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes.
+
+frequently observed errors:
+1. Authentication error 
+2. The current branch practice1 has no upstream branch.
+
+
+git commands
+---------------
+git add .--> to stage the changes
+git reset ---> To pull back the stagging changes 
+git reset <file-name> --> To pull back particular file 
+git commit -m "updated" --> To commit the changes 
+git revert <commitid>--> To remove the changes from the local repo
+-----------
+Branches
+-----------
+git branch --> to check the branches. 
+git branch <ranch-name> --> To create new branch
+git diff <branch-name> --> it shows u diff b/w current branch and given branch
+git merge ---> it merge the two branches 
+git checkout -b <branch-name> --> will create n move to that branch 
+git push --all --> to push all the changes like created branches and changes.
+git branch -r --> To list all the branches 
+git branch -a --> To list all the local changes 
+git branch -d <branch-name> --> it will delete branch in local 
+git push <aliasname>: 
+To create tag
+-------------
+difference b/w branch n tag
+branch								tag
+------								---
+it is mutable 						its an immutable
+Ongoing development					Production deplymentn from master branch
+git branch <branch-name>			git tag <tag-name>
+to list git branch					to list git tag 
+git push <branch-name>				git push <tag-name>
+git push --all 						git push --tags
+
+git stash --> it is used to save the changes , though you not committed.
+git stash list --> To list all stashes.
+git stash drop --> To delete the particular stash. 
+git stash pop --> To get back the stashing file. 
+git cherry-pick  --> if we want to apply one particular commit id with one particular branch 
+git cherry-pick --abort --> To come out from the cherry-pick
+first time down loading the code from repo 
+git clone <url>
+git pull and git fetch --> to get th eupdate dcode from the repo.
+git pull --> it will pull the updated code from the remote repo to local and provides to the working area.
+***git pull = git fetch + git merge*** 
+git fetch--> it will pull the code from the remote repo to the local reposotory. 
+git merge --> if the changes to be merge with working directory after the fetch command used.
+
+To generate the ssh key
+-----------------------
+generte the ssh key in local computer and paste the key in github
+ssh-keygen --> To creat ethe ssh key 
+paste the key in github, once its done execute the below command 
+ssh -T git@github.com
+===========================================================
+::Maven::
+Maven is a build automation tool used primarily for Java projects.
+Maven can also be used to build and manage projects written in C#, Ruby, Scala, and other languages. 
+The Maven project is hosted by the Apache Software Foundation
+
+Developer(s): Apache Software Foundation
+Initial release: 13 July 2004
+
+Stable release: 3.8.6 / 6 June 2022
+
+.jar files 
+
+POM--> project object Model
+
+===========================
+continuous integration
+----------------------
+continuous integration, is a software development and DevOps practice in which each developer integrates their new code into the main branch of code at least once a day, often many times per day.
+
+Automated testing is done against each iteration of the build to identify integration issues earlier, when they are easier to fix , which also helps avoid problems at the final merge for the release.
+Overall, continuous integration helps streamline the build process, resulting in higher-quality software and more predictable delivery schedules.
+
+java--> .jar
+.net/asp/php---> .war
+
+Continuous delivery
+-------------------
+Continuous delivery, another DevOps practice, instead of focuses on delivering any validated changes to the code base—updates, bug fixes, even new features—to users as quickly and safely as possible.
+
+Continuous deployment
+---------------------
+Continuous deployment streamlines the process further, using automated testing to validate code base changes.
+Continuous delivery picks up where continuous integration ends, automating the delivery of applications to selected infrastructure environments. 
+It ensures the automation of pushing code changes to different environments, such as development, testing and production.
+
+The following are some of the most popular continuous integration tools:
+
+Jenkins,Buildbot,Go,Travis CI,GitLab CI.
+
+.yaml/.yml ----> 
+
+Jenkins: 
+A widely used open source continuous integration tool, Jenkins allows developers to automatically build, integrate and test code as soon as they commit it to the source repository, making it easier for developers to catch bugs early and deploy software faster. The docker plug-in is available on Jenkins.
+
+CI Tools benefits:
+1. Hundreds of plug-ins that can support your project
+2. Wide support for open source languages, such as Python, Java and JavaScript.
+3. No cost, giving students, startups and developers working on the side a powerful tool that's easy on the budget.
+
+Jenkins features ::
+
+Immediate bug defector 
+It allows to integrate all the required s/w to plug in with 
+No other integration is needed once the automation started 
+Its a contiouns deployble system at any point
+Conitnuou build with Mavne , Ant , Gradle.
+
+2011-->>Initial release
+
+two types of versions are availble 
+		1. stable version
+		2. weekly version -->> quarter releses can expected from jenkins 
+
+service jenkins status ---> To check the status of Jenkins
+service jenkins start ---> To start the Jenkins service
+service jenkins stop --> To Stop the Jenkins service.
+jenkins dashoard explanation
+-------------------------------
+New item--> to create a new job/pipeline
+people----> all the users wll be available there 
+build history 
+manage plugins--> required plugins can  installed
+build queue--> any jobs waiting to deploy it will be under here 
+build execution status--> builded jobs available here 
+select freestyle project 
+---------------------------
+Master/Slave Architecture
+---------------------------
+launch two instances one os for master and one is for slave
+install java , jenkins , maven git into master
+install java , git onto slave 
+create a job in jenkins and build job and it clone repo from the github.
+go to manage jenkins--> manage node----> new node -->
+create one dir into slave machine and copy the pwd into the one of the option in node creation
+build job in slave and check in the slave workspace for the cloned code.
+
+-------------------------------------------------------------------------
+integration github with jenkins
+-------------------------------
+1. poll scm
+2. build periodically
+3. webhook
+
+Tomcat-Installation 
+<------------------->
+1. install ec2 server---Done 
+2. update ec2--Done 
+3. install any java version---Done 
+4. d/w tomacat .zip file from the ofiicial website ---Done 
+5. needs to set up tomacat by providing accesses---Done 
+	givee 777 access to shutdown.sh and startup.sh
+		
+6. will open a new port 8090 for tomcat in SG.
+
+7. do setup tomcat-server to login. 
+
+
+path linkup for tomcat up and down
+-------------------------------------->>>  
+ln -s /opt/apache-tomcat-9.0.65/bin/startup.sh /usr/local/bin/tomcatup
+ 
+ln -s /opt/apache-tomcat-9.0.65/bin/shutdown.sh /usr/local/bin/tomcatdown
+ 
+ ===>>go to /conf/tomcat-users.xml and add the below
+ 
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-status"/>
+  <user username="admin" password="admin" roles="manager-gui,manager-script,manager-jmx,manager-status"/>
+  <user username="deployer" password="deployer" roles="manager-script"/>
+  <user username="tomcat" password="tomcatadmin" roles="manager-gui"/>
+ 
+Ansible:
+--------
+
+Ansible is a suite of software tools that enables infrastructure as code. It is open-source and the suite includes software provisioning, configuration management, and application deployment functionality.
+
+Originally written by Michael DeHaan and acquired by Red Hat in 2015.
+Ansible is designed to configure both Unix-like systems as well as Microsoft Windows.
+
+Ansible is agentless, relying on temporary remote connections via SSH or Windows Remote Management which allows PowerShell execution.
+===============================
+			Docker
+==============================
+What is the traditional approach to host any application?
+In traditional approach we need 
+Users
+Process
+Hardware
+O/S
+-----------------------
+
+
+Docker is a conatainerisation tool 
+Docker CLI
+Docker Daemon-->> DSl (Daemon specific langauge) 
+Docker registry 
+
+
+Docker-file:
+which can be having instructions to create an image
+Docker will proceess all the commnads from top to bottom
+we will provide few keywords in docker file to execute 
+
+FROM ubuntu
+ENV TZ 'Europe/Tallinn'
+    RUN echo $TZ > /etc/timezone && \
+    apt-get update && apt-get install -y tzdata && \
+    rm /etc/localtime && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    apt-get clean
+RUN apt-get update && apt install apache2 -y
+COPY index.html /var/www/html/index.html
+
+1) FROM: it indicates Base image on top it , we can create a our own image 
+
+FROM <Tomcat/ubuntu/postgress>
+
+2) MAINTAINER --> author of the docker file image 
+
+3) COPY --> it is used in local to copy file/folder to image wile creating an image 
+
+COPY <source file>  <targer-file>
+
+4) ADD--> ADD <source> <target>
+
+5)RUN--> It executes commands on top of ase image (ubuntu) while creating an new image 
+  it installing required s/w while creating an image 
+  
+  eg:- RUN yum install java 
+6) CMD	--> by using this keyword, we can execute  commands while creating a container.
+
+7) ENTRYPOINT --> we can set an entry point for the conatiners while creatimg a container CMD keyword will be overiding the commads , but ENTRYPOINT can't override
+
+8) WORKDIR ---> using this keyword we can set a working dir for our image/container
+ WORKDIR /etc/Gitcode
+
+9) ENV-->  we can setup an environment variables by using this keyword.
+
+10) LABLE --> lable keyword is used to add any lable to our image 
+
+11) ARG -->
+
+12) USER --> we can can create an user for your Docker Image or Container 
+   
+   USER <user-name>
+
+13) EXPOSE --> it indicates that which port our container is listening too.
+
+shell form and executable form 
+
+Shel form 
+------------
+FROM ubuntu
+ENV TZ 'Europe/Tallinn'
+    RUN echo $TZ > /etc/timezone && \
+    apt-get update && apt-get install -y tzdata && \
+    rm /etc/localtime && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    apt-get clean
+RUN apt-get update && apt install apache2 -y
+COPY index.html /var/www/html/myweb.war
+
+RUN <cmd>
+
+RUN , CMD, ENTRYPOINT can be defined under shell and executable form
+
+CMD <command> <arg>
+
+executable form :
+
+RUN ["apt-get update && apt install apache2 -y", "Args"]
+
+Docker network
+Docker compose 
+Docker swarm 
+Docker volumes
+ 
+Docker imageName ---> docker-image
+
+DockerRepo Name--> docker-demo-images
+
+Conatiner Name---> ubuntucontainer
+
+container id --> ac794df2081c06f0de09f5ac3a67e92ad22cbf2474630b89890c2e7984c30d3e
+
+
+docker tag docker-image anilmikkili/docker-demo-images:1
+
+docker push anilmikkili/docker-demo-images:1
+
+docker run -dti --name ubuntucontainer docker-image
+
+docker run -dti --name cntr1 -p 81:80 dockerimage
+
+docker run -dti --name testcontainer4 -p 83:80 dckr-img
+
+docker tag dckr-img  anilmikkili/docker-demo-images:1
+
+docker push anilmikkili/docker-demo-images:1
+
+to create conatiner 
+
+docker run -dti --name testcontainer3 -p 82:80 dckr-img
+
+
+Remove the conatainer
+docker rm -f <conatainer-name>
+
+stop/start the conatiner
+docker start <conatainer-name>
+
+to remove the dockerimage
+docker rmi -f <Image_name>
+
+to stop the running container
+docker stop <container_name/id>
+
+command to verify if the container has stopped
+docker ps -a
+
+
+If you’d like to rename your container, use the docker rename command:
+docker rename container-name new-name
+
+
+To destroy a stopped container, invoke the following command
+docker rm <container_name/id>
+
+ -dti --> We use the -d flag to detach the container from our terminal and run it in the background
+
+--name <container-name> will name the container <container-name>
+===============================================
+goint to create 2 or more cntainers on the same instance 
+
+assign diffrent port to the containers 
+
+docker rm 72ecdd0b2eec
+
+testcontainer3
+
+0.0.0.0:82->80/tcp,
+
+
+grep dckr-img
+
+Docker volumes 
+docker compose 
+docker Swarm
+docker network
+--------------
+Docker provides the basic infrastructure for networking containers in a single host. 
+When installing docker creates a virtual ethernet bridge called “docker0”.
+Docker uses the network that is not in conflict with the host network. 
+When we start the docker service , it will first check 
+whether we have given a custom bridge option to the docker daemon,if not docker will create its 
+own bridge called “docker0”
+to check docker0 --> try with ifconfig 
+
+Docker provides 3 default networks
+
+The Bridge,host and None.
+Bridge - The bridge network is provided by default and this is the network to which a container 
+created on this host connects. This maps the “docker0” bridge on the host.
+Now, Lets start a Containers and once started, check the bridge network interface using the inspect command as below
+
+  docker network inspect bridge
+
+In the above output we can see that the container we started uses the bridge network by default.
+The containers that we create will be added to this network by default and will be 
+assigned an IP address from the subset of the IPs reserved for bridge. 
+
+New network creation
+
+  docker network create --driver bridge <network-Name>
+
+docker network rm <network-Name> : remove the docker network
+docker network rm test-network
+
+docker network connect <newly created network> <conatainer-name>
+
+docker network inspect test-network--> to attach the container to the newly created network 
+
+Docker compose
+==============
+The docker-compose is a tool for defining and running multi-container application.
+its a yaml file --> .yml/.yaml
+
+
+
+
+	
+	
+	
+sample yaml file
+project:
+  groupId:
+  dependencies:
+  - dependency:
+      groupId:
+	  artifactId:
+
+variables in docker compose
+
+1. version 
+2. services:
+3. volumes:
+4. network:
+  
+  <dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+Docker Volumes
+------------------
+what is the important points to be considered while deploy an application as container?
+
+local volumes 
+external volumes(network volumes)
+
+if u create a mount point to the db container 
+
+ind mount 
+docker persistent volumes----> its  recomended in docker 
+
+API---> Application programming interface 
+
+APi-server
+
+self -managed k8's cluster --> it should be mantained by their own
+Managed k8's cluster --> managed by someone else 
+
+Aws--> Elastic k8's servive (EKS)
+Azure --> AKS  managed by azure 
+
+
+Docker installation should be  there in all the 3 insatances ---> 
+===============================================================
+Devops Tools
+----------
+Git/GitHub---->> Repository to hold the source code
+Maven--> It is a Autonated Build tool to make source code into build artifact like .jar , .war ,.exe etc.
+SonarQube--> To scan the code whether its upto the mark or Not
+		----> By folowing some strategies like testing coverage morethan 80%
+Nexus Repository--> To hold the dependencies and Artifacts
+Ansible---> Configuration Management tool
+Docker ---> Conatinerisation tool
+K8's----> Orchestration tool
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
