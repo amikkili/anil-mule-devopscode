@@ -13,12 +13,13 @@ will be providing some class notes.
 Tools list
 ------------
 Source code management tools::--> GitHub/svn/mercula/tfs
-COnfiguration management tools:--> Ansible/chef/puppet/saltlake/Terraform
+Configuration management tools:--> Ansible/chef/puppet/saltlake/Terraform
 Continuos integration--> Jenkins/Teamcity/Hudsan/Bamboo
 Continuos Deployment/Delivery---> Docker
 Build tool --> Maven/ Ant/Graddle
 Monitiring Tools:--> Ngios/Splunk
 Orchestration Tool:: --> Kuberenetes(k8's)
+SonarQube and Nexus Repo 
 Cloud:--> AWS/AZure/GCP/IBM Cloud /Alibaba cloud
 
 services: 
@@ -233,7 +234,7 @@ The cal command in Linux
 
 ----------------------------
 Linux package installation
-list of the os Redhat, centos,Fedora,Suse,Uuntu,Debian, etc.
+list of the os Redhat, centos,Fedora,Suse,Ubntu,Debian, etc.
 Redhat/centos
 ----------------------------
 rpm (redhat package manager)
@@ -302,7 +303,10 @@ To list the softwares installed
 #yum list installed <package-name>
 #yum list installed --> To get all the installed packages.
 
---------------------------------------------------
+******************VPC*************************
+what is pc??
+A private cloud is a model of cloud computing where the infrastructure is dedicated to a single user organization.
+
 why vpc 
 due to some security breaches we are going for vpc, because we can't use the same ip in the same region 
 vpc-aws
@@ -333,9 +337,14 @@ where IPv6 is the enhanced version of IPv4.
 There are various differences between IPv4 and IPv6 protocol including their features, but the crucial one is the number of addresses (Address space) it generates.
 
 CIDR --> classless Inter-Domain Routing Block
-/8 ===> 255.0.0.0 ===> 16 lacs ip address will be available.
+ 10.50.0.0/8 ===> 255.0.0.0 ===> 16 lacs ip address will be available.
 /16 ==> 255.255.0.0 ==> 65000 ip address ---aws supported.
 /24 ==> 255.255.255.0 ==> 256 ip addresses.
+
+52.3.223.253
+
+3.232.108.176
+
 
 IPv6
 FDEC:BA98:7654:3210:ADBF:BBFF:2922:FFFF
@@ -382,20 +391,31 @@ permission got changed ..only owner has read accss now.
 				   
 
 ================8/22/22================
-Git: Git is an open source distributed version control system designed
+VCS:
+vcs allows dev to work continuously.
+it doesn't allow to overwrite the developers(each other) changes 
+it maintains a history of evry commit along with the commit id.
+---
+Git: 
+-----
+Git is an open source distributed version control system designed
 to handle everything from small to very large projects with speed and efficiancy.
 
-It will manage and keep tacks your changes of your projects.
+It will manage and keep tracks your changes of your projects.
 
-It has a command line and GUI tool for pushing , committing the projects to the github, bitbucket or gitlab.
+It has a command line and GUI tool for pushing, committing the projects to the github, bitbucket or gitlab.
 
-GitHub: GitHub is a cloud based git repository hosting service.
+GitHub: 
+-------
+GitHub is a cloud based git repository hosting service.
 
 Here you can manage and share your code with other and manage development teams as collaborators.
 
 You can manage private repositories with 3 collaborators for a software development projects.
 
-Git Lab: Git lab is a web-based devops life cycle tool provides a git repository manager provides wiki, 
+Git-Lab:
+--------
+Git lab is a web-based devops life cycle tool provides a git repository manager provides wiki, 
 issue tracking and CI/CD pipe line.
 ======================================
 Steps to Create an account with GitHub
@@ -423,6 +443,8 @@ easiest way of doing branching
 default branch is master
 
 ==============8/23/22=================
+what is Repository?
+Repository is a collection of files 
 what is branch?
  In Git, branches are a part of your everyday development process. Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes.
 
@@ -457,7 +479,7 @@ difference b/w branch n tag
 branch								tag
 ------								---
 it is mutable 						its an immutable
-Ongoing development					Production deplymentn from master branch
+Ongoing development					Production deployment from master branch
 git branch <branch-name>			git tag <tag-name>
 to list git branch					to list git tag 
 git push <branch-name>				git push <tag-name>
@@ -529,6 +551,7 @@ Jenkins:
 A widely used open source continuous integration tool, Jenkins allows developers to automatically build, integrate and test code as soon as they commit it to the source repository, making it easier for developers to catch bugs early and deploy software faster. The docker plug-in is available on Jenkins.
 
 CI Tools benefits:
+-----------------
 1. Hundreds of plug-ins that can support your project
 2. Wide support for open source languages, such as Python, Java and JavaScript.
 3. No cost, giving students, startups and developers working on the side a powerful tool that's easy on the budget.
@@ -562,12 +585,13 @@ select freestyle project
 ---------------------------
 Master/Slave Architecture
 ---------------------------
-launch two instances one os for master and one is for slave
+launch two instances one is for master and otherone is for slave
 install java , jenkins , maven git into master
 install java , git onto slave 
-create a job in jenkins and build job and it clone repo from the github.
+create a job in jenkins and build job and it clone Gitrepo from the github.
+creating new Node---> 
 go to manage jenkins--> manage node----> new node -->
-create one dir into slave machine and copy the pwd into the one of the option in node creation
+create one dir into slave machine(as a ec2-user) and copy the pwd into the one of the option in node creation
 build job in slave and check in the slave workspace for the cloned code.
 
 -------------------------------------------------------------------------
@@ -610,12 +634,19 @@ ln -s /opt/apache-tomcat-9.0.65/bin/shutdown.sh /usr/local/bin/tomcatdown
 Ansible:
 --------
 
-Ansible is a suite of software tools that enables infrastructure as code. It is open-source and the suite includes software provisioning, configuration management, and application deployment functionality.
+Ansible is a suite of software tools that enables infrastructure as code. 
+It is open-source and the suite includes software provisioning, configuration management, and application deployment functionality and it was maintained by Redhat .
+
+# The main components are playbooks, configuration management and deployment
 
 Originally written by Michael DeHaan and acquired by Red Hat in 2015.
 Ansible is designed to configure both Unix-like systems as well as Microsoft Windows.
 
+
 Ansible is agentless, relying on temporary remote connections via SSH or Windows Remote Management which allows PowerShell execution.
+
+******what is the difference between ansible , chef and puppet.?
+
 ===============================
 			Docker
 ==============================
@@ -770,7 +801,7 @@ docker rm <container_name/id>
 
 --name <container-name> will name the container <container-name>
 ===============================================
-goint to create 2 or more cntainers on the same instance 
+goint to create 2 or more containers on the same instance 
 
 assign diffrent port to the containers 
 
@@ -824,12 +855,6 @@ Docker compose
 ==============
 The docker-compose is a tool for defining and running multi-container application.
 its a yaml file --> .yml/.yaml
-
-
-
-
-	
-	
 	
 sample yaml file
 project:
@@ -874,19 +899,326 @@ Managed k8's cluster --> managed by someone else
 Aws--> Elastic k8's servive (EKS)
 Azure --> AKS  managed by azure 
 
+---------------------------------------
+				K8's
+---------------------------------------
+kuberenetes is a orchestration tool/engine 
+kuberenetes first version is v1.0 was released in july 2015 
+current release is 1.26 
 
-Docker installation should be  there in all the 3 insatances ---> 
-===============================================================
-Devops Tools
-----------
-Git/GitHub---->> Repository to hold the source code
-Maven--> It is a Autonated Build tool to make source code into build artifact like .jar , .war ,.exe etc.
-SonarQube--> To scan the code whether its upto the mark or Not
-		----> By folowing some strategies like testing coverage morethan 80%
-Nexus Repository--> To hold the dependencies and Artifacts
-Ansible---> Configuration Management tool
-Docker ---> Conatinerisation tool
-K8's----> Orchestration tool
+Advantages :
+1) Automated scheduling 
+2) Self healing Capabilities
+3) Automated Rollout and Rollback 
+4) Horizatal scaling and load balancing(it supports manual scalling and auto scalling )
+5) Service discovery And Load Balancing
+
+K8's Architecture::
+kubectl is a command line command 
+
+ETCD ---> is a keyvalue data store(like a database of k8's) 
+if you want to create a pod in the cluster ....call will reach to API server ---> Api server asks ETCD because all the information about pods,nodes,services,volumes etc... 
+
+Scheduler--> it scheduel the undeployed pods , which were available in the etcd.
+kuelet is agent ofNode
+kubelet will talk to the container platform and create a containers
+
+self managed k8's cluster
+-------------------------
+kubeadem --> Multi node k8s cluster 
+
+minikube --> its just single Node k8's cluster
+
+another way to create cluster 
+KOPS--> kubernetes operations 
+
+Managed k8's cluster 
+--------------------
+those who provides the cluster wille the responsible
+AWS, GCP, Azure,IBM etc..
+EKS--> Elastic k8's service ---> provided by AWS
+AKS--> Azure k8s service ---> provided by Azure
+GKE--> Google k8s engine ---> provided by GCP
+IKE--> IBM k8s Engine ---> IBM 
+
+ports:
+protocl 	Direction 	Port-Range 	purpose 			Used-By
+-------		---------	----------	-------				-------
+TCP 		Inbound		6443		API server			API server
+"			Inbound		2379-2380   ETCD       		 	ETCD, Controll-plane
+"			Inbound		10250 		Kubelet-API 		Kubelet-API
+"			Inbound		10251		Kubelet-scheduler	Kubelet-scheduler
+"			Inbound		10252		Controll-manager 	Controll-manager
+
+Worker Nodes
+------------
+TCP 		Inbound 	10250		Kubelet-API			Kubelet-API, Controll-plane
+"			"			3000-32767	Nodeport service 	ALL
+
+
+Network on K8's
+---------------
+Weavenet
+Calico
+flannel 
+all the above were maintened by kubeproxy
+
+##K8's Objects/resources/worknodes###
+  ---------------------------------
+pods 
+services
+replication controllers
+replica sets
+daemon sets 
+deployment 
+persistent volumes claims
+stateful sets
+role 
+cluster role
+role binding 
+cluster role binding
+--------------------
+what is name spaces
+its like a cluster inside the cluster, meaning we are logically groupong k8s objects into a namespaces.
+we can have multiple namespaces inside the cluster.
+by using namespaces, we can place related apps.
+##to check the Default namespaces 
+	kubectl get namespaces or ns
+## To create a namespace 
+   kubectl create namespace <namespace-name>  eg:- filpkartapp
+ Now we can create a pods under this new namespace.
+# if we delete the namespace all the pods will be deleted 
+
+###POD'S creation#####
+pods can create in a two ways
+1. Interactive mode
+means it can be created by using kubectl commands 
+ex: - kubectl run --name javawebapp --image=dockerhandson/java-web-app -generator=run-pod/v1
+2. Declarative mode 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+spec:
+  conatainers:
+  - name: test-conatainer
+    image: nginx
+
+
+ apiVersion: v1
+ kind : Pod
+ metadata:
+   name: my-first-pod
+   namespace: devopsclasses
+   labels:devopsclasses
+   app:
+ spec:
+   conatainers:
+   - name: my-first-container
+     image: anilmikkili/my-first-image:3.0.0
+	 
+Pods can communicate by using the pod ip's only ..container doesn't have the ip here.
+##To create the pod 
+kubectl apply -f <.yaml file name>
+
+## To get all the pod info 
+kubectl get pods 
+
+##To get the events info 
+kubectl get events
+
+## To describe the pod 
+kubectl describe pod <pod-name>
+
+## To check detailed pod details 
+kubectl get pods -o wide
+
+## To login into pod(how we were logging into docker container)
+kubectl exec -it my-first-pod sh
+
+## To delete the pod
+kubectl delete pod <pod-name>
+
+What is pod scheduling?
+Taints 
+Tolerance
+nodeselector
+nodeaffinity
+#################
+the comunication will happen within the cluster not from outside the cluster.
+## curl <ip-address>:8080, it will help the container communication.
+
+is it standard  to provide the pod ip  for the commuication ?? No, because ip may change once the pod got recreated and if we mentioned many replicas in the pod creation .
+
+To achieve it service (one of the k8s object's) comes into the picture.
+###  Service
+	 -------
+     --> service makes pod accesable/discoverable within/outside(from public internet) the cluster.
+when we create a service one virtual ip getting created and this ip will be registered in k8s dns with its name(service).
+so, other application can communicate using the service name.
+service will identify the pods based on it's labels and selectors.
+## To check the labels 
+kubectl get pods --show-labels
+
+##service yaml file creation
+apiVersion: v1
+kind: Service
+metadata:
+  name: firstsvc
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: myfirstapp 
+
+## To create the service 
+kubectl apply -f firstSvc.yml
+## To check the service 
+kubectl get all 
+
+## To descrie service 
+kubectl describe service firstsvc
+
+Different kind of service names will available in k8s
+1) ClusterIP 
+2) Nodeport
+3) LoadBalancer --> if service had multiple pods then it will acts as a loadbalancer 
+## To fetch the dns
+
+kubectl get pods -n kube-system
+
+## Nodeport
+-----------
+what is Nodeport??
+
+Nodeport range is 30000 to 32767
+
+##if we want to see the list of ports 
+install netstat 
+yum install net-tools
+
+
+few commands to find the ds, deployment 
+
+ds(daemonsets )---are responsible for weave-net and kube-proxy
+deployment is responsible for coredns 
+
+kubectl get ds -n kube-system
+
+kubectl get deployment -n kube-system
+
+
+ReplicationControllers
+------------------------
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: demorc
+spec: 
+  replicas: 2
+  selector: 
+    app: demoapp
+  template:
+    metadata:
+	  name: demopod
+	  labels:
+        app: demoapp
+    spec: 
+      containers:
+      - name: democontainer
+        image: nginx
+		
+------------------------
+##  To check the ds(daemonsets)
+kubectl get ds -n kube-system
+
+##  To check the deployment
+kubectl get deployment -n kube-system
+
+## To check manifest files 
+cd /etc/kubernetes/manifests/
+
+=======================================REPLICASET=====================
+its is a next generation of ReplicationController.
+Its also a manges pod life cycle .
+we can scale up and scale down pods .
+only difference is selecting SELECTORS support .
+
+
+two types of selectors are availabe
+1. equality based  eg: <key>: <value>
+2. set based 
+selector:
+  matchExpression/matchLabels:
+  - key: app
+    operartor: in / not in 
+	values:
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demors
+spec: 
+  replicas: 2
+  selector:
+    matchLabels:
+	  app: demorsapp
+  template:
+    metadata:
+	  name: demorspod
+	  labels:
+	    app: demoapp
+	spec:
+	  cntainers:
+	  - name: democontainer
+	    image: nginx
+==========================DaemonSets=======================
+It is also same as ReplicationControllers and controlling POD life cycle.
+It's also can be used to scale up and scale down the pod.
+The only difference is it considers sele .
+## for RC selector may not be mandatory , but in case of RS its mandatory.
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: demods
+spec:
+  selector:
+  matchLabels:
+    app: demodsapp
+  template:
+    metadata:
+      name: demodspod
+      labels:
+        app: demodsapp
+    spec:
+      containers:
+      - name: demodscontainer
+        image: nginx
+if we want to see all the info reg rs in yaml format
+kubectl get rs <rs-name> -o yaml
+===========================Deployment=========================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:<Deployment-name>
+  namespace: <nsName>
+  labels: 
+    <key>:<value>
+	<key>:<value>
+spec:
+  replicas: <noofpodRelpicas>
+  strategy: (we have two kinds of strategies ReCreate and rollingUpdate)
+    type: Recreate
+  selector: 
+    matchLabels:
+	  <key>:<value>
+	template: 
+	  metadata:
+
 
 
  
