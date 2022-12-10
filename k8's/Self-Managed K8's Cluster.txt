@@ -1,0 +1,165 @@
+Steps To create Self-Managed K8's cluster
+=========================================
+3 servers are required for 1-Master and 2-worker--->> below commands common for master and worker
+***********************************************************************************************
+Master requires-->(4 gb ram , 2 core ) 
+Worker requires--> (1 gb ram , 1 core )
+
+step 1. Launch Ubuntu instance t2.medium(Master)
+		
+
+step 2. login as root , because set of commands needs to be executed ---> sudo su -
+
+step 3. update package Manager
+        apt-get update -y
+		
+step 4. apt-get -y install curl apt-transport-https
+
+step 5. curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+		
+
+step 6. echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+step 7. Install Docker 
+        apt-get install docker.io -y
+	7.1 update package Manager
+        apt-get update
+		
+step 8. apt-get install -y kubelet kubeadm kubectl
+
+step 9. Appending a file 
+       cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2",
+  "storage-opts": [
+    "overlay2.override_kernel_check=true"
+  ]
+}
+EOF
+step 10. Create a dir 
+         mkdir -p /etc/systemd/system/docker.service.d
+		 
+step 11. restart the docker 
+         systemctl daemon-reload
+		 systemctl restart docker
+		 
+step 12. *********Only in the master Node*********
+         kubeadm init
+		exit from the root and execute the rest commands.
+	
+step 13. we are trying to set up kubectl.
+
+
+		 mkdir -p $HOME/.kube
+         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+         sudo chown $(id -u):$(id -g) $HOME/.kube/config 			-----> changing the ownership
+		 
+step 14. To check the active nodes 
+			kubectl get nodes 
+			it will display all the nodes wich present , then we need  to connect created nodes with master , so for that we need to use the token 
+			available in the master node.
+			if it's missed u can generate the new one by 
+			
+			kubeadm token create --print-join-command
+			
+step 15. 
+
+kubeadm join 172.31.5.178:6443 --token j76hv7.t8z03e2fnqo58fuh \
+        --discovery-token-ca-cert-hash sha256:686e119fd84fd82b83543b0971df3381cef5575c32eaa7b7701e264616eb664f
+
+
+few imp commands to learning purpose while creating k8's
+=========================================================
+
+kubelet get nodes
+# To verify kubelet is working fine or not by below command
+
+kubelet get pods -n kube-system
+
+kubelet get pods -n kube-system -o wide
+
+# you will notice from the previous cmd , that all the pods running except one: core-dns'
+to resolve it we will install #pod network. so by using below cmd we will install the weave network
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubelet version | base64 | tr -d '\n')"
+
+
+##if we find error like:- localhost:8080 was refused - did you specify the right host or port??
+ so , needs to make the directory like below
+ mkdir ~/.kube
+ vi ~/.kube/config   ###paste the content from master node and then check
+
+#To check Namespaces
+kubectl get namespaces/ns
+
+curl cmd is used to call pod 
+
+
+#####Once the installation of k8's cluster #########
+we have to deploy the applications on it
+few k8's objects 
+pods
+services
+
+
+
+Fully managed kuberenetes cluster --->>EKS
+******************************************
+
+To create EKS cluster below steps to be followed
+step 1. launch ubuntu server
+
+step 2. install kubectl 
+        
+		curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+		sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+		
+		##To check the Kubectl version
+		kubectl version --client
+		
+step 3. Install aws cli 
+
+		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+		apt-get install unzip
+		unzip awscliv2.zip		
+		sudo ./aws/install
+		##To check the version
+		aws --version
+		
+step 4. aws configure
+		
+		needs to provide accesskey , secret key , region(us-east-1) and data type(json)
+		##To check the aws configure
+		just type aws configure, it will show u all the values
+		
+step 5. Now create a eks cluster 
+
+	cloudformation vpc template
+	https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-08-12/amazon-eks-vpc-private-subnets.yaml
+
+step 6. Once the cluster is Active , check the clustres are created or not
+		aws eks list-clusters
+		
+step 7. To Add cluster with Ubuntu server (which we have created in the begining)
+		 aws eks update-kubeconfig --name EKSDemo --region ap-south-1
+step 8. Nodes creation
+		Go to cluster and Add Node group
+		select nodes Max: 3 MIn: 2
+		
+step 9. To check the Nodes 
+		
+		kubectl get nodes
+
+step 10. create a file with .yml extention
+		eg:- Deployment.yml
+		
+step 11: To deploy yml file 
+        kubectl apply -f Deployment.yml
+		
+		
+
+

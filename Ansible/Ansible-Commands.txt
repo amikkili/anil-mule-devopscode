@@ -1,0 +1,65 @@
+::Ansile Installation in Ec2::
+
+1. Launch 2 new instances on AWS
+2. install Ansible on one AWS instances--> yum install ansible
+
+2. To check Ansible version--> ansile --version
+
+**changes to be done in ansible
+pvt id add cheyyali
+-------------------
+vi /etc/hosts
+
+vi /etc/ansible/hosts
+
+[webservers] lo  private Ip add cheyali eg: [webservers] 172.31.93.233
+
+ssh key generate cheyali
+
+command: sh-genkey
+
+ssh key needs to be added into the  instance where ansible not available
+
+ansible ni connect cheyali where ansible available
+--------------------------------------------------
+ansible all -m ping--> it will connets to ansible systems
+
+ansible playbook script raayali where ansible available
+-------------------------------------------------------
+vi Demoplaybook.yml-->this is playbook to build jar/war file
+
+eg:
+- hosts: 172.31.93.233
+  become: true
+  tasks:
+   - name: copying file
+     copy:
+      src: /opt/myweb/target/myweb-8.2.0.war
+      dest: /opt
+
+ansible-playbook Demoplaybook.yml-->>To run the playbook
+
+
+
+
+
+vi /etc/hosts
+
+  322  cat /root/.ssh/id_rsa.pub
+  323  vi /etc/ssh/sshd
+  324  vi /etc/ssh/sshd_config
+  325  ansible all -m ping
+  326  vi Demoplaybook.yml
+  327  pwd
+  328  vi Demoplaybook.yml
+  329  ls
+  330  vi Demoplaybook.yml
+  331  ansible-playbook Demoplaybook.yml
+  332  vi Demoplaybook.yml
+  333  pwd
+  334  vi Demoplaybook.yml
+  335  ansible-playbook Demoplaybook.yml
+  336  vi Demoplaybook.yml
+  337  ansible-playbook Demoplaybook.yml
+  338  vi Demoplaybook.yml
+  339  ansible-playbook Demoplaybook.yml

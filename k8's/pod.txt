@@ -1,0 +1,38 @@
+GitHub
+Maven Build
+Jenkins pipeline
+Ansible
+SonarQube
+Nexus Repo
+Docker
+Kubernetes
+======
+linux --> ec2 instances in linux 
+
+AWS
+=====
+Ec2 instances creatin and comunication with ec2
+EKS--> elastic k8's service
+s3
+i am role
+elastic ip
+security groups
+vpc
+nat gateway's
+subnet
+to prepare th resume for the ntetv
+will be conducting some mock interviews also
+providing some notes along with interview questions as per the tools
+===============================
+project cost $30 
+Agile methodology
+-----------------
+we are implementing s/w product in sprint manner 
+where all the team dev/test/admin/ba/manager/clients
+====================================================
+mis communication b/w dev team and admin team
+ 
+
+
+
+

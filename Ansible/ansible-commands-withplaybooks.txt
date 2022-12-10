@@ -1,0 +1,64 @@
+Ansible-Commands
+================
+step 1: do install 3 instances and make them  1 as Master and ther 2 as nodes 
+step 2: once u launches ec2 instances run below commands 
+ a. useradd ansible
+ b. passwd ansible and provide password also as ansible 
+ c. go to vi /etc/ssh/sshd_config and remove comment for Rootlogin and password authentication 
+ d. go to vi /etc/sudoers and add ansible user there like ansible ALL=(ALL) NOPASSWD: ALL
+ e. strt the service--> service sshd start
+ f. change the user --> su - ansible 
+ g. create a rsa private key --> ssh-keygen -t rsa 
+ h. restart the service--> sudo service sshd restart
+ 
+above steps to perform in all the 3 instnces
+
+below commands to perform only in Masternode 
+ a. add public ip of the 2 nodes instances 
+    ssh-copy-id <n1 public ip>
+	ssh-copy-id <n2 public ip>
+	type ansible user password there (b. passwd ansible and provide password also as ansible)
+due to this the communication will estalish in master and nodes
+
+ b. install ansible in master
+
+    sudo amazon-linux-extras install ansible2 -y 
+ c. check ansible version ansible --version
+ d. open a file vi /etc/ansible/ansible.cfg and remove comment for inventory file 
+ e. go to vi /etc/ansible/hosts and add nodes private ips under [webserers] 
+Now you can run the commands to check the master and nodes by using below commands 
+
+ ansible all -m ping --> iyt will ping all the servers which you have mentioned in inventory file 
+ 
+ ansible all -m shell -a 'uptime'--> it will uptime for all the machines.
+ 
+ ansible all -m yum -a "name=httpd state=present"  --become---> it will install httpd s/w in nodes 
+ ansible all -m yum -a "name=httpd state=started"  --become ---> it will start the httpd 
+
+::playbooks::
+
+playbooks extension i s .yml or yaml
+playbooks contains list of tasks , task contains modules and module will execute the entire playbooks
+
+commands
+
+ansible-playbook <playookname>---> to run a playbook
+ansible-playbook <playookname>  --syntax-check --> t check the playook syntax-check
+
+sample playbook
+
+cat ping.yml
+---
+- hosts: all
+  gather_facts: no 
+  remote_user: ansible
+  tasks:
+    - name: Test connection
+	  ping: 
+	  remote_user: ansible
+...
+
+
+
+
+

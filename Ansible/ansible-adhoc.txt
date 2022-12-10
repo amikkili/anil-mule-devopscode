@@ -1,0 +1,28 @@
+
+======ANSIBLE
+
+
+useradd ansible
+   
+ passwd ansible
+ vi /etc/ssh/sshd_config
+ vi /etc/sudoers
+service sshd start
+     
+su - ansible
+
+
+
+
+========ACM AND JENKINS
+
+useradd ansible
+passwd ansible
+ vi /etc/ssh/sshd_config
+ vi /etc/sudoers
+service sshd start
+     
+su - ansible
+ssh-keygen -t rsa
+sudo service sshd restart
+ssh-copy-id 13.233.132.53 (jenkins)

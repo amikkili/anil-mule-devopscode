@@ -1,0 +1,209 @@
+*************SonarQube installation*******************
+
+pre-requiistes
+
+s/w requirements
+
+java  installation
+
+h/w requirements
+
+RAM 2 gb for sonar and 1gb for os
+
+sonarqube official website 
+
+consider t2.medium as a server 
+
+https://docs.sonarqube.org/7.7/requirements/requirements/
+
+java version checking--> java -version
+
+h/w checking--> free -h
+
+installation steps
+
+go to root
+
+sudo su -
+
+download sonarqube in /opt folder
+
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.6.zip
+
+unzip it
+
+unzip <s/w name>
+
+
+due to some security precautions its not astandard practice to run sonar as a root user
+so create a new user and provide an access to it 
+
+useradd sonar(user sonar added successfully)
+check user sonar got created or not??
+cat /etc/passwd
+
+to provide sudo access goto 
+visudo  and add sonar there 
+sonar ALL=(ALL)   NOPASSWD:ALL
+now we have given the sudo access to username --> sonar 
+
+Now we have to run sonarqube s/w with the sonar user 
+so , we have to change the access 
+firstly check ls -l
+
+check the ownership of sonarqube s/w
+ls -l
+
+Change the owner and group permission to /opt/sonarqube-7.6 directory 
+
+chown -R sonar:sonar /opt/sonarqube-7.6/
+chmod -R 775 /opt/sonarqube-7.6/
+
+su - sonar to change to sonar user 
+******now u were in sonar user 
+
+go to sonarqube folder and then /bin folder
+
+select the os which u have launched , go to there 
+
+next, start the sonarqube by using --> ./sonar.sh start
+
+check the status of sonarqube by using --> ./sonar.sh status
+
+stop it by using ./sonar.sh stop
+
+
+Default creds for sonarQube is 
+username: admin
+password: admin
+default port : 9000
+==================
+
+changing the port :
+
+go to conf directory and select sonar.propeties
+there go to server area and change the port if u want any other except 9000(eg. 9980)
+
+=====================================
+integrating with Jenkins
+========================
+
+edit the pom.xml file by  writing sonarqube details(complete url eg:- http://public-ip:port) and 
+add username/password or token which can be generated in the sonarqube website itself.
+myAccount-->security->generate(instead of providing username/password provide token)
+
+put in the jenkins dashoard (clk on configure) where maven is available.
+
+give --> clean package sonar:sonar
+
+
+
+ 
+**************Nexus Installation*****************
+pre-requisites
+--------------
+java 1.8
+nexus 3.15
+stp 1. update linux
+yum update -y
+
+step 2. install java 1.8 version
+yum install java-1.8.0-openjdk
+
+step 3. in opt dir d/w nexus
+
+wget https://download.sonatype.com/nexus/3/nexus-3.15.1-01-unix.tar.gz
+
+unzip it
+
+tar -zxvf <s/w name>
+
+step 4. 
+for best practice change name it simply nexus 
+mv /opt/nexus-3.15.1-01 /opt/nexus
+
+step 5. Add other user as we did in sonarQube
+
+useradd nexus
+
+you can check the user by using below command 
+ 
+cat /etc/passwd
+
+Change the owner and group permission to /opt/nexus directory 
+
+chown -R nexus:nexus /opt/nexus
+chown -R nexus:nexus /opt/sonatype-work
+
+chmod -R 775 /opt/nexus
+chmod -R 775 /opt/sonatype-work
+
+step 6
+ change the below file and uncommet the 
+ vi nexus/bin/nexus.rc
+ 
+ run_as_user="nexus"
+ 
+step 7
+Add nexus as a boot time meaning creating a softlink
+
+ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+
+step 8
+change the nexus user 
+su - nexus
+
+step 9
+enable the nexus services
+sudo systemctl enable nexus--> purpose of this command is  its enable nexus if linux is restarted also 
+sudo systemctl start nexus
+
+open nexus 
+http://<ip>:8081 (8081 is the default port)
+
+a. create a repository releases and snapshots 
+eg: devops-releases
+    devops-snapshots
+by default nexus creds are : 
+username: admin 
+password: admin123
+
+edit pom.xml by giving the exact url of releases and snapshots from the nexus 
+
+example:
+<distributionManagement>
+	
+	    <repository>
+	      <id>nexus</id>
+	      <name>Anil software Technologies Releases Nexus Repository</name>
+	      <url>http://13.235.103.28:8081/repository/flipkart-releases/</url>
+	    </repository>
+	    
+	    <snapshotRepository>
+	      <id>nexus</id>
+	      <name>Anil software Technologies Snapshot Nexus Repository </name>
+	      <url>http://13.235.103.28:8081/repository/flipkart-snapshot/</url>
+	    </snapshotRepository>	    
+	</distributionManagement>
+
+
+step 10. 
+needs to add nexus creds in settings.xml
+
+eg:- 
+	<server>
+      <id>nexus</id>
+      <username>admin</username>
+      <password>admin123</password>
+    </server>
+
+
+$$$$$$$$$$$ TOMCAT SERVER DEPLOYMENT $$$$$$$$$$$$$$
+
+step 1:
+up the tomcat server 
+step 2: go to jenkins dashboard and install Deploy to container 
+
+
+
+

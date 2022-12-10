@@ -1,0 +1,42 @@
+Steps To create Self-Managed ]K8's cluster
+==========================================
+step 1. Launch Ubuntu instance t2.medium
+step 2. login as root , because set of commands needs to be executed 
+step 3. update package Manager
+        apt-get update
+step 4. sudo apt -y install curl apt-transport-https
+step 5. curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+step 6. echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+step 7. Install Docker 
+        apt-get install docker.io -y
+	7.1 update package Manager
+        apt-get update
+step 8. apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+step 9. Appending a file 
+       cat > /etc/docker/daemon.json <<EOF
+			{
+				"exec-opts": ["native.cgroupdriver=systemd"],
+				"log-driver": "json-file",
+				"log-opts": {
+							"max-size": "100m"
+							},
+								"storage-driver": "overlay2",
+								"storage-opts": [
+								"overlay2.override_kernel_check=true"
+										]
+			}
+			EOF
+step 10. Create a dir 
+         mkdir -p /etc/systemd/system/docker.service.d
+step 11. restart the docker 
+         systemctl daemon-reload
+		 systemctl restart docker
+step 12. Only in the master Node
+         kubeadm init
+	exit from the root and execute the rest commands 
+step 13. mkdir -p $HOME/.kube
+         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+         sudo chown $(id -u):$(id -g) $HOME/.kube/config
+		 
+step 14. To check the active nodes 
+			kubectl get nodes 
