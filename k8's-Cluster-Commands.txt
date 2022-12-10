@@ -1,0 +1,129 @@
+k8's commands
+---------------
+step 1: docker needs to be install
+		yum install docker -y 
+	    systemctl restart docker --> docker 
+##docker wants to communicate with k8's , needs to off swapoff memory
+
+start step 2: swapoff -a  
+## needs to add daemon.json file 
+
+step 3: vi /etc/docker/daemon.json
+ {
+  "exec-opts": ["native.cgroupdriver=systemd"]
+ } 
+(once u install docker daemon.json will copied so needs to be set the daemon.json also )
+### once its done docker needs to restart 
+
+step 4: systemctl restart docker
+
+## copy n paste the below in all 3 instances
+step 5:  
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+
+name=Kubernetes
+
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+
+enabled=1
+
+gpgcheck=1
+
+repo_gpgcheck=0
+
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+exclude=kube*
+
+EOF
+
+## to comunicate with the kernel run the below 
+step 6: 
+cat <<EOF >  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+sysctl --system
+setenforce 0
+
+step 7: yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+
+step 8: now will start the k8's cluster , run the below command
+
+systemctl enable kubelet && systemctl start kubelet
+============================================****************************======================
+
+step 9: only in the master Node 
+## needs to init kubeadem (Only in master)
+kubeadm init
+
+##run below in master 
+export KUBECONFIG=/etc/kubernetes/admin.conf
+
+And add the above in .bash_profile to not ask always for the login 
+ls -la and go to .bash_profile
+
+## copy it and run in 2 nodes 
+
+eg:- kubeadm join 172.31.13.247:6443 --token s252qb.3aevju4ueya3paxw \
+        --discovery-token-ca-cert-hash sha256:fc6d886f7e61a9500f495433259ce86ae9c8d87cae310be71774d0a84b4cf3c6
+		
+##Add network (only in the master)
+
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
+## now check the nodes status
+
+kubectl get nodes
+##it will shows us the k8's network
+kubectl get all 
+
+## pods creation
+-----------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-first-pod
+spec:
+  containers:
+  - name: my-first-container
+    image: anilmikkili/my-first-image:3.0.0
+	
+
+
+kubectl create -f pods.yml	
+
+## To list the pods 
+kubectl get pods
+ ## To check where pod is created 
+kubectl get pods -o wide 
+## To know the complete details 
+kubectl describe pod <pod-name>
+
+## to login into pod(how we were logging into docker container)
+
+kubectl exec -it my-first-pod sh
+
+kubectl exec -it my-second-container bash
+
+kubectl exec -it <pod-name> bash 
+kubectl exec -it my-first-pod bash 
+## To Print Pod
+kubectl exec <pod-name> printenv
+
+## To check the service details
+
+kubectl get svc
+
+## pod deletion
+
+kubectl delete <pod-name>
+
+replicationset
+--------------
+two pods creation 
+multiple contaners creation in the same pod
+ 
+=========================================

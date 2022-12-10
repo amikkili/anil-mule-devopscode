@@ -1,0 +1,129 @@
+========== JENKINS JAVA GIT MAVEN===========
+step 1:- Change the mode to root--> sudo su -
+
+step 2:- sudo yum update -y
+
+step 3:- install java 
+     yum install -y java-1.8.0-openjdk
+
+step 4:- update the system
+   
+     sudo yum update -y
+
+step 5:- install git 
+
+     yum install -y git
+
+step 6:- Install Maven
+ 
+     sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+     sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+     sudo yum install -y apache-maven
+
+step 7:- Install jenkins 
+
+     sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+     sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+     yum install epel-release
+     sudo amazon-linux-extras install epel -y
+     yum install jenkins -y
+ 
+step 8:- To fetch the password 
+
+    cat /var/lib/jenkins/secrets/initialAdminPassword
+	
+	
+step 9:- To start the jenkins serever
+
+    service jenkins start
+	
+	9.1:- open port 8080 at instance on inbound area and call the jenkins server with ip of ec2
+	
+step 10:- To stop te jenkins server
+    service jenkins stop 
+
+step 11:- Go to jenkins Dashoard and install all the plugins properly
+
+    Manage Jenkins-->Manage Plug ins--> available-->search-->Git blue
+    In this way you can install all the plug ins 
+
+step 11:- Go to Manage Jenkins-->Global Tool Configuration and add JDK and Maven 
+
+step 12:- Go to Global Tool Configuration --> select Build -->Invoke top-level Maven targets--> select Maven-->Goals--> mvn clean package
+
+
+======================Jenkins-NEW Commands=====================
+    1   yum update –y
+    2   wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    3   rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    4   yum upgrade
+    5   amazon-linux-extras install java-openjdk11 -y
+    6   yum install jenkins -y
+    7   systemctl enable jenkins
+    8   systemctl start jenkins
+    9   systemctl status jenkins
+
+
+===========TOMCAT-Installation==================
+
+sudo su
+
+yum update -y
+
+amazon-linux-extras install java-openjdk11 -y
+
+yum update -y
+
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.69/bin/apache-tomcat-9.0.69.zip
+
+To unzip --> unzip apache-tomcat-9.0.69.zip
+
+if its a .tar filr use below
+
+tar -xvf archive.tar.gz
+
+change to apache-tomcat-9.0.58 then 
+cd bin
+./shutdown.sh --> to make Tomcat down 
+./startup.sh --> to make Tomcat Up
+
+chmod 777 webapps
+chmod 777 catalina.sh
+chmod 777 shutdown.sh
+chmod 777 startup.sh
+
+need to comment context file where local host is pointing
+ 
+--> go to /conf/tomcat-users.xml and add the below
+ 
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-status"/>
+  <user username="admin" password="admin" roles="manager-gui,manager-script,manager-jmx,manager-status"/>
+  <user username="deployer" password="deployer" roles="manager-script"/>
+  <user username="tomcat" password="tomcatadmin" roles="manager-gui"/>
+
+===========================
+To deploy artifact into Tomcat
+------------------------------
+manage jenkins-->gloalconfig-->search container to Deploy(install it)
+once install it --> go to Jenkins dash board -->postbuildActions-->select deploy war/jar
+
+WAR/JAR file**/*.war
+contextpath --> anyName
+add Tomcat (by providing username and password)
+Tomcat Url--> <Url>
+and save.
+
+
+path linkup for tomcat up and down
+-------------------------------------->>>
+
+ln -s /opt/apache-tomcat-9.0.65/bin/startup.sh /usr/local/bin/tomcatup
+
+ln -s /apache-tomcat-9.0.69/bin/startup.sh /usr/local/bin/tomcatup
+
+ln -s /apache-tomcat-9.0.69/bin/shutdown.sh /usr/local/bin/tomcatdown
+
+ln -s /opt/apache-tomcat-9.0.65/bin/shutdown.sh /usr/local/bin/tomcatdown
